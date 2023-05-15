@@ -72,3 +72,4 @@ echo "</pre>";
 $mesa->mostrarInformacionProducto();
 // $silla->mostrarNombreProducto();
 // $mesa->mostrarPrecioProducto();
+?>
