@@ -49,6 +49,7 @@ class Bicicleta extends Transporte{
     }
 }
 
+echo '<pre>';
 // $transporte = new Transporte(2,3);
 $carroToyota = new Carro(2,4,5);
 // $carroToyota->ruedas = 6;
@@ -56,3 +57,4 @@ $carroToyota->getInfo();
 echo "<br>";
 $bicicletaHaro = new Bicicleta(2,1);
 $bicicletaHaro->getInfo();
+echo '</pre>';
