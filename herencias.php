@@ -58,3 +58,4 @@ echo "<br>";
 $bicicletaHaro = new Bicicleta(2,1);
 $bicicletaHaro->getInfo();
 echo '</pre>';
+?>
