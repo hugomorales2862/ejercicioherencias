@@ -6,57 +6,59 @@ error_reporting(E_ALL);
 // ABSTRACT -
 // STATIC -
 
-abstract class Transporte{
-    protected $ruedas;
-    public $capacidad;
-    public static $color = "Verde";
+//las clases abstract son las que no se instancian si no que solo pueden ser heredadas
+abstract class verduras{
+    protected $nombre;
+    public $precio;
+    public static $color = "Verde"; // usamos el static para que este nombre pueda aparecer como por defecto 
 
-    public function __construct($ruedas, $capacidad){
-        $this->ruedas = $ruedas;
-        $this->capacidad = $capacidad;
+    public function __construct($nombre, $precio){
+        $this->nombre = $nombre;
+        $this->precio = $precio;
     }
 
     final public static function getColor(){
-        echo "El transporte es de color " . self::$color;
+        echo "Las verduras son de color  " . self::$color; 
+        //cuando usamos el metodo static no se puede hacer referencia usando this 
+         // unicamente con el self 
     }
 
     public function getInfo() : void{
-        echo "El transporte tiene $this->ruedas ruedas, y tiene capacidad de: $this->capacidad";
+        echo "Las verduras segun su tipo tienen un nombre $this->nombre y tienen un precio $this->precio Quetzales";
     }
 
-    public function getRuedas(): void{
-        echo "El transporte tiene $this->ruedas ruedas";
+    public function getNombre(): void{
+        echo "El nombre del tipo de verdura es $this->nombre";
     }
 }
 
-class Carro extends Transporte{
-    public $puertas;
+class Verdura_grande extends verduras{
+    public $nombre;
 
-    public function __construct($puertas = 0, $ruedas = 0, $capacidad = 0)
+    public function __construct($nombre = 'verdura', $precio = 0, $estado = 'comestible')
     {
-        $this->puertas = $puertas;
-        parent::__construct($ruedas, $capacidad);
+        $this->nombre = $nombre;
+        //el parent hace referencia a la clse parent 
+        parent::__construct($nombre, $precio, $estado);
     }
 
     public function getInfo() : void{
-        echo "El carro tiene $this->ruedas ruedas, capacidad de: $this->capacidad y $this->puertas puertas, y el color es: " . parent::$color;
+        echo "el $this->nombre es una verdura y tiene un precio de $this->precio Quetzales y el color es: " . parent::$color;
     }
 }
 
-class Bicicleta extends Transporte{
+class Zanahoria extends verduras{
     public function getInfo() : void{
-        echo "La bicicleta tiene $this->ruedas ruedas, capacidad de: $this->capacidad";
+        echo "La $this->nombre es una verdura y tiene un precio de $this->precio Quetzales";
     }
 }
 
 echo '<pre>';
-// $transporte = new Transporte(2,3);
-$carroToyota = new Carro(2,4,5);
-// $carroToyota->ruedas = 6;
-$carroToyota->getInfo();
+$verdurasTomate = new verdura_grande('tomate',4,'no comestible');
+$verdurasTomate->getInfo();
 echo "<br>";
-$bicicletaHaro = new Bicicleta(2,1);
-$bicicletaHaro->getInfo();
+$verdurasZanahoria= new Zanahoria('Zanahoria',2);
+$verdurasZanahoria->getInfo();
 echo '</pre>';
 
 ?>
